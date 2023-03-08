@@ -1,0 +1,83 @@
+---
+title: NatHERS Climate Zone Boundaries
+format:
+  360-analysis-html: default
+author: James Goldie
+date: last-modified
+code-fold: true
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(sf)
+library(readabs)
+library(here)
+```
+
+NatHERS climate zones are aggregations of postcodes: each zones maps to several postcodes. We're going to use this mapping, along with digital boundaries of postcodes, to build polygons of each climate zone.
+
+Here's the postcode mapping (we've padded the postcodes that start with 0):
+
+```{r}
+#| label: get-zone-mapping
+
+postcode_url <- paste0(
+  "https://www.nathers.gov.au",
+  "/sites/default/files/2019-12/",
+  "NatHERSclimatezonesNov2019_0.csv")
+
+postcode_url %>%
+  read_csv(skip = 1, col_select = 1:4, col_types = "ciii") %>%
+  mutate(
+    postcode = str_pad(Postcode, width = 4, pad = "0"),
+    zone = coalesce(Primary, Secondary, Tertiary)) %>%
+  filter(!is.na(postcode), nchar(postcode) == 4) %>%
+  select(postcode, zone) %>%
+  write_csv(here("data", "nathers-zones.csv")) %>%
+  print() ->
+postcode_map
+```
+
+And here're the boundaries. There are no Postal Areas in 2019, so we'll use the [2016 POA boundaries](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.003July%202016?OpenDocument#Data):
+
+```{r}
+#| label: get-boundaries
+
+boundary_url <- paste0(
+  "https://www.abs.gov.au/",
+  "ausstats/subscriber.nsf/log?",
+  "openagent&1270055003_poa_2016_aust_shape.zip&",
+  "1270.0.55.003&Data%20Cubes&4FB811FA48EECA7ACA25802C001432D0&0&July%",
+  "202016&13.09.2016&Previous")
+zip_temp_path <- tempfile(fileext = ".zip")
+
+download.file(boundary_url, zip_temp_path)
+unzip(zip_temp_path, exdir = here("data"))
+```
+
+Now let's load the boundaries with `{sf}` and aggregate them:
+
+```{r}
+#| label: load-boundaries
+here("data", "POA_2016_AUST.shp") %>%
+  read_sf() %>%
+  right_join(postcode_map, by = c("POA_CODE16" = "postcode")) %>%
+  group_by(zone) %>%
+  summarise() %>%
+  st_simplify(dTolerance = 0.05) %>%
+  filter(!st_is_empty(.)) ->
+boundaries
+
+st_write(
+  boundaries,
+  here("data", "nathers-boundaries.geojson"),
+  delete_dsn = TRUE)
+```
+
+As a final note, we'll clean up the intermediary postcode shapefile:
+
+```{r}
+#| label: zone-mapping-cleanup
+unlink(file.path(here("data"), "POA_2016_AUST.*"))
+```
