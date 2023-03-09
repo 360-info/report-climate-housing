@@ -1,0 +1,296 @@
+---
+title: Renter survey
+format:
+  360-analysis-html: default
+author: James Goldie
+date: last-modified
+code-fold: true
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(haven)
+library(glue)
+library(here)
+
+# load the survey data. exclude people without a postcode
+survey <-
+  read_dta(here("data", "02_AHCD_Sensitive_Data_File_001469.dta")) %>%
+  filter(Q43 != 97, !is.na(Q43)) %>%
+  mutate(Q43 = as.character(Q43))
+```
+
+Let's also merge in the NatHERS Climate Zone data so that we can see how many people are in each climate zone.
+
+```{r}
+#| label: climate-zone-merge
+
+here("data", "nathers-zones.csv") %>%
+  read_csv() %>%
+  right_join(survey, by = c("postcode" = "Q43"), multiple = "all") ->
+survey_merged
+```
+
+Now, how many people are in each zone?
+
+```{r}
+#| label: postcode-hist
+survey_merged %>%
+  count(zone) %>%
+  {
+    ggplot(.) +
+      aes(x = zone, y = n) +
+      geom_col() +
+      coord_flip()
+  }
+```
+
+Okay, so these results are very uneven in terms of the distribution of people. In fact, `r survey_merged %>% count(zone) %>% filter(n < 10) %>% nrow()` zones have less than 10 respondants.
+
+As well as communicating statistically significant results, we may want to be mindful about redacting responses in zones with small response counts. Or perhaps lumping those smaller zones together (although we can't make any climate-specific inferences about those).
+
+## Responses by zone
+
+### Heat, cold and housing condition
+
+#### Q12: Can you keep comfortably warm in your house during winter?
+
+* Excluding "Not applicable, have not experienced living in house during winter"
+
+```{r}
+#| label: comfortable-winter
+survey_merged %>%
+  select(zone, Q12) %>%
+  mutate(Q12 = as_factor(Q12)) %>%
+  filter(Q12 %in% c("Yes", "No")) %>%
+  count(zone, Q12, name = "Q12_n") %>%
+  group_by(zone) %>%
+  mutate(
+    Q12_ntotal = sum(Q12_n),
+    Q12_p = Q12_n / sum(Q12_n)) %>%
+    filter(Q12 == "No") ->
+prop_Q12
+```
+
+#### Q13: Can you keep comfortably cool in your house during summer?
+
+* Excluding "Not applicable, have not experienced living in house during summer"
+
+```{r}
+#| label: comfortable-summer
+survey_merged %>%
+  select(zone, Q13) %>%
+  mutate(Q13 = as_factor(Q13)) %>%
+  filter(Q13 %in% c("Yes", "No")) %>%
+  count(zone, Q13, name = "Q13_n") %>%
+  group_by(zone) %>%
+  mutate(
+    Q13_ntotal = sum(Q13_n),
+    Q13_p = Q13_n / sum(Q13_n)) %>%
+    filter(Q13 == "No") ->
+prop_Q13
+```
+
+#### Q18: How would you rate the overall condition of your current home, such as the walls, roof, doors and windows for example.
+
+* Excluding "Don't know"
+
+```{r}
+#| label: condition-house
+survey_merged %>%
+  select(zone, Q18) %>%
+  mutate(Q18 = as_factor(Q18)) %>%
+  filter(Q18 != "Don't know") %>%
+  count(zone, Q18, name = "Q18_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q18, zone, fill = list(Q18_n = 0)) %>%
+  group_by(zone) %>%
+  mutate(
+    Q18_ntotal = sum(Q18_n),
+    Q18_p = Q18_n / sum(Q18_n)) ->
+prop_Q18
+```
+
+### Rental affordability
+
+#### Q25: What is your household rent per month?
+
+```{r}
+#| label: monthly-rent
+survey_merged %>%
+  select(zone, Q25) %>%
+  filter(!(Q25 %in% c(99998, 99999))) %>%
+  mutate(Q25 = zap_labels(Q25)) %>%
+  # TODO - bin up rent for comparison with outcomes?
+  {
+    ggplot(.) +
+      aes(x = Q25, group = zone) +
+      geom_freqpoly(alpha = 0.4) +
+      scale_x_log10(
+        labels = scales::label_number(
+          prefix = "$",
+          scale_cut = scales::cut_short_scale())) +
+      labs(
+        x = "Rent per month",
+        y = "Number of people",
+        title = "Household rent per month",
+        subtitle = "In each climate zone")
+  }
+```
+
+#### Q26: In general, how affordable is this amount for your household?
+
+```{r}
+#| label: affordability
+survey_merged %>%
+  select(zone, Q26) %>%
+  mutate(Q26 = as_factor(Q26)) %>%
+  count(zone, Q26, name = "Q26_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q26, zone, fill = list(Q26_n = 0)) %>%
+  filter(Q26 != "[DNRO] Don't know") %>%
+  # get proportions
+  group_by(zone) %>%
+  mutate(
+    Q26_ntotal = sum(Q26_n),
+    Q26_p = Q26_n / sum(Q26_n)) ->
+prop_Q26
+```
+
+#### Q27: What impact would a 10% increase in your rent have on your current financial situation?
+
+Looks like all the data is missing here.
+
+```{r}
+#| label: affordability
+survey_merged %>% pull(Q27) %>% summary()
+```
+
+#### Q28: After paying your rent, is there typically enough money left for ...?
+
+##### Essential spending (bills, clothing, transport, food and drink, etc.)
+
+```{r}
+#| label: affordability-essentials
+survey_merged %>%
+  select(zone, Q28_01) %>%
+  mutate(Q28.02 = as_factor(Q28_01)) %>%
+  count(zone, Q28.01, name = "Q28.01_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q28.01, zone, fill = list(Q28.01_n = 0)) %>%
+  filter(Q28.01 %in% c("Yes", "No")) %>%
+  # get proportions
+  group_by(zone) %>%
+  mutate(
+    Q28.01_ntotal = sum(Q28.01_n),
+    Q28.01_p = Q28.01_n / sum(Q28.01_n)) ->
+prop_Q28.01
+```
+
+##### Non-essential spending (social activities, holidays, TV, nonessential food and drink, and alcohol)
+
+```{r}
+#| label: affordability-nonessentials
+survey_merged %>%
+  select(zone, Q28_02) %>%
+  mutate(Q28.02 = as_factor(Q28_02)) %>%
+  count(zone, Q28.02, name = "Q28.02_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q28.02, zone, fill = list(Q28.02_n = 0)) %>%
+  filter(Q28.02 %in% c("Yes", "No")) %>%
+  # get proportions
+  group_by(zone) %>%
+  mutate(
+    Q28.02_ntotal = sum(Q28.02_n),
+    Q28.02_p = Q28.02_n / sum(Q28.02_n)) ->
+prop_Q28.02
+```
+
+##### Savings or investment
+
+```{r}
+#| label: affordability-savings
+survey_merged %>%
+  select(zone, Q28_03) %>%
+  mutate(Q28.03 = as_factor(Q28_03)) %>%
+  count(zone, Q28.03, name = "Q28.03_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q28.03, zone, fill = list(Q28.03_n = 0)) %>%
+  filter(Q28.03 %in% c("Yes", "No")) %>%
+  # get proportions
+  group_by(zone) %>%
+  mutate(
+    Q28.03_ntotal = sum(Q28.03_n),
+    Q28.03_p = Q28.03_n / sum(Q28.03_n)) ->
+prop_Q28.03
+```
+
+### Health
+
+#### Q29: In general, would you say your health is...?
+
+```{r}
+#| label: health-general
+survey_merged %>%
+  select(zone, Q29) %>%
+  mutate(Q29 = as_factor(Q29)) %>%
+  count(zone, Q29, name = "Q29_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q29, zone, fill = list(Q29_n = 0)) %>%
+  filter(Q29 != "[DNRO] Refused") %>%
+  # get proportions
+  group_by(zone) %>%
+  mutate(
+    Q29_ntotal = sum(Q29_n),
+    Q29_p = Q29_n / sum(Q29_n)) ->
+prop_Q29
+```
+
+#### Q31: In general, would you say your mental health is...?
+
+```{r}
+#| label: mentalhealth-general
+survey_merged %>%
+  select(zone, Q31) %>%
+  mutate(Q31 = as_factor(Q31)) %>%
+  count(zone, Q31, name = "Q31_n") %>%
+  # fill the missing responses (due to 0 counts) back in
+  complete(Q31, zone, fill = list(Q31_n = 0)) %>%
+  filter(Q31 != "[DNRO] Refused") %>%
+  # get proportions
+  group_by(zone) %>%
+  mutate(
+    Q31_ntotal = sum(Q31_n),
+    Q31_p = Q31_n / sum(Q31_n)) ->
+prop_Q31
+```
+
+Let's see a bar chart of these results:
+
+```{r}
+prop_Q31 %>%
+  filter(Q31_ntotal > 25) %>%
+  mutate(zone_label = glue("Zone {zone} (n = {Q31_ntotal})")) %>%
+  {
+    ggplot(.) +
+      aes(x = zone_label, y = Q31_p, fill = Q31) +
+      geom_col(position = "stack") +
+      coord_flip() +
+      scale_fill_brewer(type = "div", palette = "RdBu", direction = -1) +
+      labs(
+        x = "In general, would you say your mental health is...?"
+      )
+  }
+
+```
+
+## National responses
+
+
+
+## Outstanding questions
+
+Q12/Q13, Q25-Q28: are folks within a climate zone more/less likely to report being comfortable in summer/winter if they have higher rent/less affordable rent/have higher impact with a 10% increase in rent/there's money left over for things
+
+
