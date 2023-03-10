@@ -52,6 +52,79 @@ As well as communicating statistically significant results, we may want to be mi
 
 ## Responses by zone
 
+Let's also add margin of error at 95% confidence to see which climate zones might exclude on the basis of low population:
+
+```{r}
+#| label: helper-moe
+moe_95p <- function(p, n) {
+  1.96 * sqrt((p * (1 - p)) / n)
+}
+```
+
+And here's a barchart function to visualise our responses:
+
+```{r}
+#| label: helper-stacked-barchart
+stacked_barchart <- function(df, col_prefix, title = "Title here") {
+
+  df %>%
+    select(zone, starts_with(col_prefix)) %>%
+    # standardise column names
+    rename(response = !!col_prefix) %>%
+    rename_with(~ str_remove_all(.x, paste0(col_prefix, "_"))) %>%
+    ungroup() %>%
+    mutate(zone_label = glue("Zone {zone} (n = {ntotal})")) ->
+  df_tidy
+  
+  p_base <- ggplot(df_tidy) +
+    aes(x = fct_reorder(zone_label, ntotal), y = p, fill = response) +
+    geom_col(position = "stack") +
+    scale_y_continuous(labels = scales::label_percent()) +
+    coord_flip() +
+    scale_fill_brewer(type = "div", palette = "RdBu", direction = -1) +
+    theme_minimal(base_size = 16) +
+    labs(title = title)
+
+  return(p_base)
+    
+}
+```
+
+```{r}
+#| label: helper-errorbar-barchart
+errorbar_barchart <- function(df, col_prefix, title = "Title here") {
+
+  df %>%
+    select(zone, starts_with(col_prefix)) %>%
+    # standardise column names
+    rename(response = !!col_prefix) %>%
+    rename_with(~ str_remove_all(.x, paste0(col_prefix, "_"))) %>%
+    ungroup() %>%
+    mutate(
+      zone_label = glue("Zone {zone} (n = {ntotal})"),
+      zone_label = fct_reorder(zone_label, ntotal, .desc = TRUE)) ->
+  df_tidy
+
+  # print(levels(df_tidy$zone_label))
+
+  print(df_tidy)
+  
+  p_base <- ggplot(df_tidy) +
+    aes(x = response, y = p, fill = response) +
+    geom_col() +
+    geom_linerange(aes(ymin = plow, ymax = phigh)) +
+    facet_wrap(vars(zone_label)) +
+    scale_y_continuous(labels = scales::label_percent()) +
+    coord_flip() +
+    scale_fill_brewer(type = "div", palette = "RdBu", direction = -1) +
+    theme_minimal(base_size = 16) +
+    labs(title = title)
+
+  return(p_base)
+    
+}
+```
+
 ### Heat, cold and housing condition
 
 #### Q12: Can you keep comfortably warm in your house during winter?
@@ -68,9 +141,16 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q12_ntotal = sum(Q12_n),
-    Q12_p = Q12_n / sum(Q12_n)) %>%
-    filter(Q12 == "No") ->
+    Q12_p = Q12_n / sum(Q12_n),
+    Q12_moe = moe_95p(p = Q12_p, n = Q12_ntotal),
+    Q12_plow = Q12_p - Q12_moe,
+    Q12_phigh = Q12_p + Q12_moe) %>%
+  arrange(zone) ->
 prop_Q12
+
+prop_Q12 %>%
+  errorbar_barchart("Q12",
+    "Can you keep comfortably warm in hyour house during winter?")
 ```
 
 #### Q13: Can you keep comfortably cool in your house during summer?
@@ -87,9 +167,16 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q13_ntotal = sum(Q13_n),
-    Q13_p = Q13_n / sum(Q13_n)) %>%
-    filter(Q13 == "No") ->
+    Q13_p = Q13_n / sum(Q13_n),
+    Q13_moe = moe_95p(p = Q13_p, n = Q13_ntotal),
+    Q13_plow = Q13_p - Q13_moe,
+    Q13_phigh = Q13_p + Q13_moe) %>%
+  arrange(zone) ->
 prop_Q13
+
+prop_Q13 %>%
+  errorbar_barchart("Q13",
+    "Can you keep comfortably cool in hyour house during summer?")
 ```
 
 #### Q18: How would you rate the overall condition of your current home, such as the walls, roof, doors and windows for example.
@@ -108,7 +195,8 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q18_ntotal = sum(Q18_n),
-    Q18_p = Q18_n / sum(Q18_n)) ->
+    Q18_p = Q18_n / sum(Q18_n)) %>%
+  arrange(zone) ->
 prop_Q18
 ```
 
@@ -154,7 +242,8 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q26_ntotal = sum(Q26_n),
-    Q26_p = Q26_n / sum(Q26_n)) ->
+    Q26_p = Q26_n / sum(Q26_n)) %>%
+  arrange(zone) ->
 prop_Q26
 ```
 
@@ -175,7 +264,7 @@ survey_merged %>% pull(Q27) %>% summary()
 #| label: affordability-essentials
 survey_merged %>%
   select(zone, Q28_01) %>%
-  mutate(Q28.02 = as_factor(Q28_01)) %>%
+  mutate(Q28.01 = as_factor(Q28_01)) %>%
   count(zone, Q28.01, name = "Q28.01_n") %>%
   # fill the missing responses (due to 0 counts) back in
   complete(Q28.01, zone, fill = list(Q28.01_n = 0)) %>%
@@ -184,8 +273,25 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q28.01_ntotal = sum(Q28.01_n),
-    Q28.01_p = Q28.01_n / sum(Q28.01_n)) ->
+    Q28.01_p = Q28.01_n / sum(Q28.01_n),
+    Q28.01_moe = moe_95p(p = Q28.01_p, n = Q28.01_ntotal),
+    Q28.01_plow = Q28.01_p - Q28.01_moe,
+    Q28.01_phigh = Q28.01_p + Q28.01_moe) %>%
+  arrange(zone) ->
 prop_Q28.01
+
+prop_Q28.01 %>%
+  multichoice_barchart("Q28.01",
+    paste(
+      "After paying your rent, is there typically enough",
+      "money left for essential spending?",
+      sep = "\n"))
+prop_Q28.01 %>%
+  errorbar_barchart("Q28.01",
+    paste(
+      "After paying your rent, is there typically enough",
+      "money left for essential spending?",
+      sep = "\n"))
 ```
 
 ##### Non-essential spending (social activities, holidays, TV, nonessential food and drink, and alcohol)
@@ -203,8 +309,25 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q28.02_ntotal = sum(Q28.02_n),
-    Q28.02_p = Q28.02_n / sum(Q28.02_n)) ->
+    Q28.02_p = Q28.02_n / sum(Q28.02_n),
+    Q28.02_moe = moe_95p(p = Q28.02_p, n = Q28.02_ntotal),
+    Q28.02_plow = Q28.02_p - Q28.02_moe,
+    Q28.02_phigh = Q28.02_p + Q28.02_moe) %>%
+  arrange(zone) ->
 prop_Q28.02
+
+prop_Q28.02 %>%
+  multichoice_barchart("Q28.02",
+    paste(
+      "After paying your rent, is there typically enough",
+      "money left for non-essential spending?",
+      sep = "\n"))
+prop_Q28.02 %>%
+  errorbar_barchart("Q28.02",
+    paste(
+      "After paying your rent, is there typically enough",
+      "money left for non-essential spending?",
+      sep = "\n"))
 ```
 
 ##### Savings or investment
@@ -222,9 +345,26 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q28.03_ntotal = sum(Q28.03_n),
-    Q28.03_p = Q28.03_n / sum(Q28.03_n)) ->
+    Q28.03_p = Q28.03_n / sum(Q28.03_n),
+    Q28.03_moe = moe_95p(p = Q28.03_p, n = Q28.03_ntotal),
+    Q28.03_plow = Q28.03_p - Q28.03_moe,
+    Q28.03_phigh = Q28.03_p + Q28.03_moe) %>%
+  arrange(zone) ->
 prop_Q28.03
-```
+
+prop_Q28.03 %>%
+  stacked_barchart("Q28.03",
+    paste(
+      "After paying your rent, is there typically enough",
+      "money left for savings or investment?",
+      sep = "\n"))
+prop_Q28.03 %>%
+  errorbar_barchart("Q28.03",
+    paste(
+      "After paying your rent, is there typically enough",
+      "money left for savings or investment?",
+      sep = "\n"))
+``` 
 
 ### Health
 
@@ -243,8 +383,13 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q29_ntotal = sum(Q29_n),
-    Q29_p = Q29_n / sum(Q29_n)) ->
+    Q29_p = Q29_n / sum(Q29_n)) %>%
+  arrange(zone) ->
 prop_Q29
+
+prop_Q29 %>%
+  stacked_barchart("Q29",
+    "In general, would you say your health is...?")
 ```
 
 #### Q31: In general, would you say your mental health is...?
@@ -262,11 +407,15 @@ survey_merged %>%
   group_by(zone) %>%
   mutate(
     Q31_ntotal = sum(Q31_n),
-    Q31_p = Q31_n / sum(Q31_n)) ->
+    Q31_p = Q31_n / sum(Q31_n)) %>%
+  arrange(zone) ->
 prop_Q31
+
+prop_Q31 %>%
+  stacked_barchart("Q31",
+    "In general, would you say your mental health is...?")
 ```
 
-Let's see a bar chart of these results:
 
 ```{r}
 prop_Q31 %>%
@@ -293,4 +442,60 @@ prop_Q31 %>%
 
 Q12/Q13, Q25-Q28: are folks within a climate zone more/less likely to report being comfortable in summer/winter if they have higher rent/less affordable rent/have higher impact with a 10% increase in rent/there's money left over for things
 
+### Warm vs. cool: which do people struggle with more?
 
+```{r}
+list(winterwarm = prop_Q12, summercool = prop_Q13) %>%
+  # combine and pivot
+  bind_rows(.id = "df") %>%
+  rename(Q12_response = Q12, Q13_response = Q13) %>%
+  ungroup() %>%
+  pivot_longer(
+    cols = matches("Q1[23]*"),
+    names_to = c("question", ".value"),
+    names_sep = "_",
+    values_drop_na = TRUE) %>%
+  # tidy up season and response
+  select(-question) %>%
+  rename(question = df) %>%
+  arrange(zone) %>%
+  filter(response == "No") %>%
+  # make ntotal counts uniform across questions (just for exploratory sorting
+  # purposes)
+  group_by(zone) %>%
+  mutate(
+    ntotal = min(ntotal),
+    signif = if_else(plow[1] <= phigh[2] & plow[2] <= phigh[1], "❌", "✅")) %>%
+  ungroup() %>%
+  # make zone labels, turn %s back into counts, reformat seasons
+  mutate(
+    nlow = plow * ntotal,
+    nhigh = phigh * ntotal,
+    season = case_match(question,
+      "winterwarm" ~ "Winter",
+      "summercool" ~ "Summer")) %>%
+  select(zone, season, signif, ntotal, n, p, moe, nlow, plow, nhigh, phigh) %>%
+  write_csv(here("data", "survey-discomfort-summerwinter.csv")) %>%
+  mutate(
+    zone_label = glue("{signif} Zone {zone} (n = {ntotal})"),
+    zone_label = fct_reorder(zone_label, ntotal, .desc = TRUE)) %>%
+  {
+    ggplot(.) +
+      aes(x = season, y = p, fill = season) +
+      geom_col() +
+      geom_linerange(aes(ymin = plow, ymax = phigh)) +
+      facet_wrap(vars(zone_label)) +
+      scale_y_continuous(labels = scales::label_percent()) +
+      scale_fill_manual(
+        values = c("Summer" = "firebrick", "Winter" = "royalblue"),
+        name = "Season") +
+      coord_flip() +
+      labs(
+        title = paste(
+          "% renters who aren't be comfortable",
+          "in summer heat or winter cold"),
+        subtitle = "✅ Statistically significant"
+      )
+  }
+
+```

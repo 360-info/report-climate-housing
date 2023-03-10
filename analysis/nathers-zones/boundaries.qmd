@@ -11,6 +11,7 @@ code-fold: true
 #| label: setup
 library(tidyverse)
 library(sf)
+library(ggplot2)
 library(readabs)
 library(here)
 ```
@@ -73,6 +74,18 @@ st_write(
   boundaries,
   here("data", "nathers-boundaries.geojson"),
   delete_dsn = TRUE)
+```
+
+Let's see a quick map with the regions labelled:
+
+```{r}
+boundaries <-
+  read_sf(here("data", "nathers-boundaries.geojson"))
+
+ggplot(boundaries) +
+  geom_sf(fill = "#cccccc") +
+  geom_sf_label(aes(label = zone)) +
+  theme_minimal()
 ```
 
 As a final note, we'll clean up the intermediary postcode shapefile:
