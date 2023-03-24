@@ -18,3 +18,14 @@ Thumbs.db
 # output folder (you may want to exclude files when we publish!)
 /out/*
 !/out
+
+/.luarc.json
+
+# original survey data is sensitive and cannot be shared
+data/*.dta
+data/*.sas
+data/*.sas7bdat
+data/*.sav
+
+data/csiro-climate/projections/*
+data/csiro-climate/typical/*

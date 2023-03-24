@@ -1,0 +1,416 @@
+zone,town,zone_label,state,lat,lon,scenario,heating_hrs,safe_hrs,cooling_hrs
+1,Darwin,1 - Darwin,NT,-12.42,130.89,Historical 1990-2015,0,417,8343
+1,Darwin,1 - Darwin,NT,-12.42,130.89,Low emissions 2050,0,255,8505
+1,Darwin,1 - Darwin,NT,-12.42,130.89,Low emissions 2090,0,267,8493
+1,Darwin,1 - Darwin,NT,-12.42,130.89,High emissions 2050,0,84,8676
+1,Darwin,1 - Darwin,NT,-12.42,130.89,High emissions 2090,0,7,8753
+2,Pt Hedland,2 - Pt Hedland,WA,-20.37,118.63,Historical 1990-2015,436,1588,6736
+2,Pt Hedland,2 - Pt Hedland,WA,-20.37,118.63,Low emissions 2050,277,1436,7047
+2,Pt Hedland,2 - Pt Hedland,WA,-20.37,118.63,Low emissions 2090,271,1383,7106
+2,Pt Hedland,2 - Pt Hedland,WA,-20.37,118.63,High emissions 2050,178,1259,7323
+2,Pt Hedland,2 - Pt Hedland,WA,-20.37,118.63,High emissions 2090,48,723,7989
+3,Longreach,3 - Longreach,QLD,-23.44,144.28,Historical 1990-2015,1374,1750,5636
+3,Longreach,3 - Longreach,QLD,-23.44,144.28,Low emissions 2050,1104,1515,6141
+3,Longreach,3 - Longreach,QLD,-23.44,144.28,Low emissions 2090,1183,1534,6043
+3,Longreach,3 - Longreach,QLD,-23.44,144.28,High emissions 2050,825,1284,6651
+3,Longreach,3 - Longreach,QLD,-23.44,144.28,High emissions 2090,558,1220,6982
+4,Carnarvon,4 - Carnarvon,WA,-24.89,113.67,Historical 1990-2015,776,2761,5223
+4,Carnarvon,4 - Carnarvon,WA,-24.89,113.67,Low emissions 2050,640,2323,5797
+4,Carnarvon,4 - Carnarvon,WA,-24.89,113.67,Low emissions 2090,558,2261,5941
+4,Carnarvon,4 - Carnarvon,WA,-24.89,113.67,High emissions 2050,507,1739,6514
+4,Carnarvon,4 - Carnarvon,WA,-24.89,113.67,High emissions 2090,260,1404,7096
+5,Townsville,5 - Townsville,QLD,-19.25,146.77,Historical 1990-2015,326,1431,7003
+5,Townsville,5 - Townsville,QLD,-19.25,146.77,Low emissions 2050,240,1231,7289
+5,Townsville,5 - Townsville,QLD,-19.25,146.77,Low emissions 2090,223,1270,7267
+5,Townsville,5 - Townsville,QLD,-19.25,146.77,High emissions 2050,101,927,7732
+5,Townsville,5 - Townsville,QLD,-19.25,146.77,High emissions 2090,21,597,8142
+6,Alice Springs,6 - Alice Springs,NT,-23.80,133.89,Historical 1990-2015,2088,1973,4699
+6,Alice Springs,6 - Alice Springs,NT,-23.80,133.89,Low emissions 2050,2013,1719,5028
+6,Alice Springs,6 - Alice Springs,NT,-23.80,133.89,Low emissions 2090,1976,1785,4999
+6,Alice Springs,6 - Alice Springs,NT,-23.80,133.89,High emissions 2050,1655,1648,5457
+6,Alice Springs,6 - Alice Springs,NT,-23.80,133.89,High emissions 2090,1259,1381,6120
+7,Rockhampton,7 - Rockhampton,QLD,-23.38,150.48,Historical 1990-2015,957,2239,5564
+7,Rockhampton,7 - Rockhampton,QLD,-23.38,150.48,Low emissions 2050,758,1959,6043
+7,Rockhampton,7 - Rockhampton,QLD,-23.38,150.48,Low emissions 2090,777,1989,5994
+7,Rockhampton,7 - Rockhampton,QLD,-23.38,150.48,High emissions 2050,615,1635,6510
+7,Rockhampton,7 - Rockhampton,QLD,-23.38,150.48,High emissions 2090,350,1077,7333
+8,Moree,8 - Moree,NSW,-29.49,149.85,Historical 1990-2015,2748,2252,3760
+8,Moree,8 - Moree,NSW,-29.49,149.85,Low emissions 2050,2301,2140,4319
+8,Moree,8 - Moree,NSW,-29.49,149.85,Low emissions 2090,2358,2148,4254
+8,Moree,8 - Moree,NSW,-29.49,149.85,High emissions 2050,2111,2053,4596
+8,Moree,8 - Moree,NSW,-29.49,149.85,High emissions 2090,1260,1866,5634
+9,Amberley,9 - Amberley,QLD,-27.63,152.71,Historical 1990-2015,2161,2812,3787
+9,Amberley,9 - Amberley,QLD,-27.63,152.71,Low emissions 2050,1758,2489,4513
+9,Amberley,9 - Amberley,QLD,-27.63,152.71,Low emissions 2090,1940,2632,4188
+9,Amberley,9 - Amberley,QLD,-27.63,152.71,High emissions 2050,1503,2334,4923
+9,Amberley,9 - Amberley,QLD,-27.63,152.71,High emissions 2090,1014,1695,6051
+10,Brisbane,10 - Brisbane,QLD,-27.39,153.13,Historical 1990-2015,1596,3009,4155
+10,Brisbane,10 - Brisbane,QLD,-27.39,153.13,Low emissions 2050,1260,2624,4876
+10,Brisbane,10 - Brisbane,QLD,-27.39,153.13,Low emissions 2090,1320,2813,4627
+10,Brisbane,10 - Brisbane,QLD,-27.39,153.13,High emissions 2050,789,2489,5482
+10,Brisbane,10 - Brisbane,QLD,-27.39,153.13,High emissions 2090,310,1834,6616
+11,Coffs Harbour,11 - Coffs Harbour,NSW,-30.31,153.12,Historical 1990-2015,1961,3865,2934
+11,Coffs Harbour,11 - Coffs Harbour,NSW,-30.31,153.12,Low emissions 2050,1446,3446,3868
+11,Coffs Harbour,11 - Coffs Harbour,NSW,-30.31,153.12,Low emissions 2090,1522,3523,3715
+11,Coffs Harbour,11 - Coffs Harbour,NSW,-30.31,153.12,High emissions 2050,1310,3240,4210
+11,Coffs Harbour,11 - Coffs Harbour,NSW,-30.31,153.12,High emissions 2090,680,2167,5913
+12,Geraldton,12 - Geraldton,WA,-28.81,114.70,Historical 1990-2015,1932,3339,3489
+12,Geraldton,12 - Geraldton,WA,-28.81,114.70,Low emissions 2050,1513,2880,4367
+12,Geraldton,12 - Geraldton,WA,-28.81,114.70,Low emissions 2090,1661,3022,4077
+12,Geraldton,12 - Geraldton,WA,-28.81,114.70,High emissions 2050,1393,2820,4547
+12,Geraldton,12 - Geraldton,WA,-28.81,114.70,High emissions 2090,1011,2207,5542
+13,Perth,13 - Perth,WA,-31.93,115.98,Historical 1990-2015,2868,3045,2847
+13,Perth,13 - Perth,WA,-31.93,115.98,Low emissions 2050,2414,3030,3316
+13,Perth,13 - Perth,WA,-31.93,115.98,Low emissions 2090,2619,3048,3093
+13,Perth,13 - Perth,WA,-31.93,115.98,High emissions 2050,2132,2970,3658
+13,Perth,13 - Perth,WA,-31.93,115.98,High emissions 2090,1496,2576,4688
+14,Armidale,14 - Armidale,NSW,-30.53,151.62,Historical 1990-2015,5539,2222,999
+14,Armidale,14 - Armidale,NSW,-30.53,151.62,Low emissions 2050,4725,2672,1363
+14,Armidale,14 - Armidale,NSW,-30.53,151.62,Low emissions 2090,4980,2509,1271
+14,Armidale,14 - Armidale,NSW,-30.53,151.62,High emissions 2050,4028,2909,1823
+14,Armidale,14 - Armidale,NSW,-30.53,151.62,High emissions 2090,3038,3208,2514
+15,Williamtown,15 - Williamtown,NSW,-32.79,151.84,Historical 1990-2015,2974,3437,2349
+15,Williamtown,15 - Williamtown,NSW,-32.79,151.84,Low emissions 2050,2362,3300,3098
+15,Williamtown,15 - Williamtown,NSW,-32.79,151.84,Low emissions 2090,2534,3252,2974
+15,Williamtown,15 - Williamtown,NSW,-32.79,151.84,High emissions 2050,1759,3325,3676
+15,Williamtown,15 - Williamtown,NSW,-32.79,151.84,High emissions 2090,939,2611,5210
+16,Adelaide,16 - Adelaide,SA,-34.92,138.62,Historical 1990-2015,3763,3018,1979
+16,Adelaide,16 - Adelaide,SA,-34.92,138.62,Low emissions 2050,3162,3222,2376
+16,Adelaide,16 - Adelaide,SA,-34.92,138.62,Low emissions 2090,3417,3048,2295
+16,Adelaide,16 - Adelaide,SA,-34.92,138.62,High emissions 2050,3010,3211,2539
+16,Adelaide,16 - Adelaide,SA,-34.92,138.62,High emissions 2090,1769,3385,3606
+17,Sydney RO,17 - Sydney RO,NSW,-33.86,151.21,Historical 1990-2015,2364,3822,2574
+17,Sydney RO,17 - Sydney RO,NSW,-33.86,151.21,Low emissions 2050,1691,3641,3428
+17,Sydney RO,17 - Sydney RO,NSW,-33.86,151.21,Low emissions 2090,1792,3694,3274
+17,Sydney RO,17 - Sydney RO,NSW,-33.86,151.21,High emissions 2050,1312,3267,4181
+17,Sydney RO,17 - Sydney RO,NSW,-33.86,151.21,High emissions 2090,679,2773,5308
+18,Nowra,18 - Nowra,NSW,-34.95,150.54,Historical 1990-2015,3770,3311,1679
+18,Nowra,18 - Nowra,NSW,-34.95,150.54,Low emissions 2050,3073,3450,2237
+18,Nowra,18 - Nowra,NSW,-34.95,150.54,Low emissions 2090,3154,3370,2236
+18,Nowra,18 - Nowra,NSW,-34.95,150.54,High emissions 2050,2807,3522,2431
+18,Nowra,18 - Nowra,NSW,-34.95,150.54,High emissions 2090,1680,3181,3899
+19,Charleville,19 - Charleville,QLD,-26.41,146.26,Historical 1990-2015,2113,2032,4615
+19,Charleville,19 - Charleville,QLD,-26.41,146.26,Low emissions 2050,1752,1878,5130
+19,Charleville,19 - Charleville,QLD,-26.41,146.26,Low emissions 2090,1721,1974,5065
+19,Charleville,19 - Charleville,QLD,-26.41,146.26,High emissions 2050,1628,1706,5426
+19,Charleville,19 - Charleville,QLD,-26.41,146.26,High emissions 2090,1033,1431,6296
+20,Wagga,20 - Wagga,NSW,-35.16,147.46,Historical 1990-2015,4367,2059,2334
+20,Wagga,20 - Wagga,NSW,-35.16,147.46,Low emissions 2050,3840,1943,2977
+20,Wagga,20 - Wagga,NSW,-35.16,147.46,Low emissions 2090,4066,2048,2646
+20,Wagga,20 - Wagga,NSW,-35.16,147.46,High emissions 2050,3648,2084,3028
+20,Wagga,20 - Wagga,NSW,-35.16,147.46,High emissions 2090,2752,2253,3755
+21,Melbourne RO,21 - Melbourne RO,VIC,-37.81,144.97,Historical 1990-2015,4177,3321,1262
+21,Melbourne RO,21 - Melbourne RO,VIC,-37.81,144.97,Low emissions 2050,3529,3645,1586
+21,Melbourne RO,21 - Melbourne RO,VIC,-37.81,144.97,Low emissions 2090,3681,3503,1576
+21,Melbourne RO,21 - Melbourne RO,VIC,-37.81,144.97,High emissions 2050,3178,3689,1893
+21,Melbourne RO,21 - Melbourne RO,VIC,-37.81,144.97,High emissions 2090,1885,3454,3421
+22,East Sale,22 - East Sale,VIC,-38.12,147.13,Historical 1990-2015,5354,2503,903
+22,East Sale,22 - East Sale,VIC,-38.12,147.13,Low emissions 2050,4557,2669,1534
+22,East Sale,22 - East Sale,VIC,-38.12,147.13,Low emissions 2090,4911,2720,1129
+22,East Sale,22 - East Sale,VIC,-38.12,147.13,High emissions 2050,4375,2864,1521
+22,East Sale,22 - East Sale,VIC,-38.12,147.13,High emissions 2090,2937,3016,2807
+23,Launceston (Ti Tree Bend),23 - Launceston (Ti Tree Bend),TAS,-41.42,147.12,Historical 1990-2015,5799,2247,714
+23,Launceston (Ti Tree Bend),23 - Launceston (Ti Tree Bend),TAS,-41.42,147.12,Low emissions 2050,5414,2426,920
+23,Launceston (Ti Tree Bend),23 - Launceston (Ti Tree Bend),TAS,-41.42,147.12,Low emissions 2090,5512,2415,833
+23,Launceston (Ti Tree Bend),23 - Launceston (Ti Tree Bend),TAS,-41.42,147.12,High emissions 2050,4927,2587,1246
+23,Launceston (Ti Tree Bend),23 - Launceston (Ti Tree Bend),TAS,-41.42,147.12,High emissions 2090,3342,3325,2093
+24,Canberra,24 - Canberra,ACT,-35.31,149.20,Historical 1990-2015,5314,2094,1352
+24,Canberra,24 - Canberra,ACT,-35.31,149.20,Low emissions 2050,4830,2240,1690
+24,Canberra,24 - Canberra,ACT,-35.31,149.20,Low emissions 2090,4855,2247,1658
+24,Canberra,24 - Canberra,ACT,-35.31,149.20,High emissions 2050,4542,2367,1851
+24,Canberra,24 - Canberra,ACT,-35.31,149.20,High emissions 2090,3355,2637,2768
+25,Cabramurra,25 - Cabramurra,NSW,-35.94,148.38,Historical 1990-2015,7407,1157,196
+25,Cabramurra,25 - Cabramurra,NSW,-35.94,148.38,Low emissions 2050,7001,1399,360
+25,Cabramurra,25 - Cabramurra,NSW,-35.94,148.38,Low emissions 2090,7049,1388,323
+25,Cabramurra,25 - Cabramurra,NSW,-35.94,148.38,High emissions 2050,6640,1667,453
+25,Cabramurra,25 - Cabramurra,NSW,-35.94,148.38,High emissions 2090,5385,2303,1072
+26,Hobart,26 - Hobart,TAS,-42.89,147.33,Historical 1990-2015,6189,2169,402
+26,Hobart,26 - Hobart,TAS,-42.89,147.33,Low emissions 2050,5704,2559,497
+26,Hobart,26 - Hobart,TAS,-42.89,147.33,Low emissions 2090,5870,2429,461
+26,Hobart,26 - Hobart,TAS,-42.89,147.33,High emissions 2050,5072,2980,708
+26,Hobart,26 - Hobart,TAS,-42.89,147.33,High emissions 2090,3286,3786,1688
+27,Mildura,27 - Mildura,VIC,-34.24,142.09,Historical 1990-2015,3771,2452,2537
+27,Mildura,27 - Mildura,VIC,-34.24,142.09,Low emissions 2050,3343,2526,2891
+27,Mildura,27 - Mildura,VIC,-34.24,142.09,Low emissions 2090,3462,2463,2835
+27,Mildura,27 - Mildura,VIC,-34.24,142.09,High emissions 2050,3119,2411,3230
+27,Mildura,27 - Mildura,VIC,-34.24,142.09,High emissions 2090,2087,2356,4317
+28,Richmond RAAF,28 - Richmond RAAF,NSW,-33.60,150.78,Historical 1990-2015,3280,3214,2266
+28,Richmond RAAF,28 - Richmond RAAF,NSW,-33.60,150.78,Low emissions 2050,2732,3111,2917
+28,Richmond RAAF,28 - Richmond RAAF,NSW,-33.60,150.78,Low emissions 2090,2769,3069,2922
+28,Richmond RAAF,28 - Richmond RAAF,NSW,-33.60,150.78,High emissions 2050,2450,3104,3206
+28,Richmond RAAF,28 - Richmond RAAF,NSW,-33.60,150.78,High emissions 2090,1557,2720,4483
+29,Weipa,29 - Weipa,QLD,-12.68,141.92,Historical 1990-2015,7,703,8050
+29,Weipa,29 - Weipa,QLD,-12.68,141.92,Low emissions 2050,2,533,8225
+29,Weipa,29 - Weipa,QLD,-12.68,141.92,Low emissions 2090,3,541,8216
+29,Weipa,29 - Weipa,QLD,-12.68,141.92,High emissions 2050,0,336,8424
+29,Weipa,29 - Weipa,QLD,-12.68,141.92,High emissions 2090,0,127,8633
+30,Wyndham,30 - Wyndham,WA,-15.51,128.15,Historical 1990-2015,96,786,7878
+30,Wyndham,30 - Wyndham,WA,-15.51,128.15,Low emissions 2050,41,618,8101
+30,Wyndham,30 - Wyndham,WA,-15.51,128.15,Low emissions 2090,37,630,8093
+30,Wyndham,30 - Wyndham,WA,-15.51,128.15,High emissions 2050,11,429,8320
+30,Wyndham,30 - Wyndham,WA,-15.51,128.15,High emissions 2090,9,320,8431
+31,Willis Island,31 - Willis Island,QLD,-16.29,149.96,Historical 1990-2015,0,44,8716
+31,Willis Island,31 - Willis Island,QLD,-16.29,149.96,Low emissions 2050,0,21,8739
+31,Willis Island,31 - Willis Island,QLD,-16.29,149.96,Low emissions 2090,0,30,8730
+31,Willis Island,31 - Willis Island,QLD,-16.29,149.96,High emissions 2050,0,3,8757
+31,Willis Island,31 - Willis Island,QLD,-16.29,149.96,High emissions 2090,0,0,8760
+32,Cairns,32 - Cairns,QLD,-16.87,145.75,Historical 1990-2015,143,1525,7092
+32,Cairns,32 - Cairns,QLD,-16.87,145.75,Low emissions 2050,110,1144,7506
+32,Cairns,32 - Cairns,QLD,-16.87,145.75,Low emissions 2090,110,1182,7468
+32,Cairns,32 - Cairns,QLD,-16.87,145.75,High emissions 2050,46,652,8062
+32,Cairns,32 - Cairns,QLD,-16.87,145.75,High emissions 2090,32,535,8193
+33,Broome,33 - Broome,WA,-17.95,122.24,Historical 1990-2015,255,1136,7369
+33,Broome,33 - Broome,WA,-17.95,122.24,Low emissions 2050,161,880,7719
+33,Broome,33 - Broome,WA,-17.95,122.24,Low emissions 2090,180,909,7671
+33,Broome,33 - Broome,WA,-17.95,122.24,High emissions 2050,162,826,7772
+33,Broome,33 - Broome,WA,-17.95,122.24,High emissions 2090,28,340,8392
+34,Learmonth,34 - Learmonth,WA,-22.24,114.10,Historical 1990-2015,643,2043,6074
+34,Learmonth,34 - Learmonth,WA,-22.24,114.10,Low emissions 2050,509,1785,6466
+34,Learmonth,34 - Learmonth,WA,-22.24,114.10,Low emissions 2090,540,1780,6440
+34,Learmonth,34 - Learmonth,WA,-22.24,114.10,High emissions 2050,409,1472,6879
+34,Learmonth,34 - Learmonth,WA,-22.24,114.10,High emissions 2090,186,1145,7429
+35,Mackay,35 - Mackay,QLD,-21.12,149.22,Historical 1990-2015,447,2389,5924
+35,Mackay,35 - Mackay,QLD,-21.12,149.22,Low emissions 2050,288,2018,6454
+35,Mackay,35 - Mackay,QLD,-21.12,149.22,Low emissions 2090,275,2080,6405
+35,Mackay,35 - Mackay,QLD,-21.12,149.22,High emissions 2050,184,1622,6954
+35,Mackay,35 - Mackay,QLD,-21.12,149.22,High emissions 2090,36,811,7913
+36,Gladstone,36 - Gladstone,QLD,-23.85,151.26,Historical 1990-2015,332,2915,5513
+36,Gladstone,36 - Gladstone,QLD,-23.85,151.26,Low emissions 2050,187,2438,6135
+36,Gladstone,36 - Gladstone,QLD,-23.85,151.26,Low emissions 2090,199,2593,5968
+36,Gladstone,36 - Gladstone,QLD,-23.85,151.26,High emissions 2050,144,2190,6426
+36,Gladstone,36 - Gladstone,QLD,-23.85,151.26,High emissions 2090,33,1190,7537
+37,Halls Creek,37 - Halls Creek,WA,-18.23,127.66,Historical 1990-2015,346,1356,7058
+37,Halls Creek,37 - Halls Creek,WA,-18.23,127.66,Low emissions 2050,177,1233,7350
+37,Halls Creek,37 - Halls Creek,WA,-18.23,127.66,Low emissions 2090,184,1155,7421
+37,Halls Creek,37 - Halls Creek,WA,-18.23,127.66,High emissions 2050,73,900,7787
+37,Halls Creek,37 - Halls Creek,WA,-18.23,127.66,High emissions 2090,0,455,8305
+38,Tennant Creek,38 - Tennant Creek,NT,-19.64,134.18,Historical 1990-2015,551,1490,6719
+38,Tennant Creek,38 - Tennant Creek,NT,-19.64,134.18,Low emissions 2050,348,1292,7120
+38,Tennant Creek,38 - Tennant Creek,NT,-19.64,134.18,Low emissions 2090,325,1319,7116
+38,Tennant Creek,38 - Tennant Creek,NT,-19.64,134.18,High emissions 2050,252,1211,7297
+38,Tennant Creek,38 - Tennant Creek,NT,-19.64,134.18,High emissions 2090,15,705,8040
+39,Mt Isa,39 - Mt Isa,QLD,-20.68,139.49,Historical 1990-2015,878,1546,6336
+39,Mt Isa,39 - Mt Isa,QLD,-20.68,139.49,Low emissions 2050,701,1426,6633
+39,Mt Isa,39 - Mt Isa,QLD,-20.68,139.49,Low emissions 2090,712,1446,6602
+39,Mt Isa,39 - Mt Isa,QLD,-20.68,139.49,High emissions 2050,504,1262,6994
+39,Mt Isa,39 - Mt Isa,QLD,-20.68,139.49,High emissions 2090,270,1004,7486
+40,Newman,40 - Newman,WA,-23.42,119.80,Historical 1990-2015,1358,1675,5727
+40,Newman,40 - Newman,WA,-23.42,119.80,Low emissions 2050,1115,1418,6227
+40,Newman,40 - Newman,WA,-23.42,119.80,Low emissions 2090,1140,1466,6154
+40,Newman,40 - Newman,WA,-23.42,119.80,High emissions 2050,924,1334,6502
+40,Newman,40 - Newman,WA,-23.42,119.80,High emissions 2090,496,1050,7214
+41,Giles,41 - Giles,WA,-25.03,128.30,Historical 1990-2015,1503,2106,5151
+41,Giles,41 - Giles,WA,-25.03,128.30,Low emissions 2050,1302,1787,5671
+41,Giles,41 - Giles,WA,-25.03,128.30,Low emissions 2090,1229,1796,5735
+41,Giles,41 - Giles,WA,-25.03,128.30,High emissions 2050,1098,1612,6050
+41,Giles,41 - Giles,WA,-25.03,128.30,High emissions 2090,566,1300,6894
+42,Meekatharra,42 - Meekatharra,WA,-26.61,118.54,Historical 1990-2015,1866,2103,4791
+42,Meekatharra,42 - Meekatharra,WA,-26.61,118.54,Low emissions 2050,1416,1971,5373
+42,Meekatharra,42 - Meekatharra,WA,-26.61,118.54,Low emissions 2090,1494,1995,5271
+42,Meekatharra,42 - Meekatharra,WA,-26.61,118.54,High emissions 2050,1226,1851,5683
+42,Meekatharra,42 - Meekatharra,WA,-26.61,118.54,High emissions 2090,605,1546,6609
+43,Oodnadatta,43 - Oodnadatta,SA,-27.56,135.45,Historical 1990-2015,1923,2234,4603
+43,Oodnadatta,43 - Oodnadatta,SA,-27.56,135.45,Low emissions 2050,1558,1996,5206
+43,Oodnadatta,43 - Oodnadatta,SA,-27.56,135.45,Low emissions 2090,1617,2031,5112
+43,Oodnadatta,43 - Oodnadatta,SA,-27.56,135.45,High emissions 2050,1343,1897,5520
+43,Oodnadatta,43 - Oodnadatta,SA,-27.56,135.45,High emissions 2090,722,1558,6480
+44,Kalgoorlie,44 - Kalgoorlie,WA,-30.78,121.45,Historical 1990-2015,3039,2587,3134
+44,Kalgoorlie,44 - Kalgoorlie,WA,-30.78,121.45,Low emissions 2050,2489,2573,3698
+44,Kalgoorlie,44 - Kalgoorlie,WA,-30.78,121.45,Low emissions 2090,2503,2601,3656
+44,Kalgoorlie,44 - Kalgoorlie,WA,-30.78,121.45,High emissions 2050,2224,2541,3995
+44,Kalgoorlie,44 - Kalgoorlie,WA,-30.78,121.45,High emissions 2090,1326,2191,5243
+45,Woomera,45 - Woomera,SA,-31.16,136.80,Historical 1990-2015,2926,2533,3301
+45,Woomera,45 - Woomera,SA,-31.16,136.80,Low emissions 2050,2405,2546,3809
+45,Woomera,45 - Woomera,SA,-31.16,136.80,Low emissions 2090,2608,2471,3681
+45,Woomera,45 - Woomera,SA,-31.16,136.80,High emissions 2050,2246,2491,4023
+45,Woomera,45 - Woomera,SA,-31.16,136.80,High emissions 2090,1247,2390,5123
+46,Cobar,46 - Cobar,NSW,-31.48,145.83,Historical 1990-2015,2972,2202,3586
+46,Cobar,46 - Cobar,NSW,-31.48,145.83,Low emissions 2050,2458,2243,4059
+46,Cobar,46 - Cobar,NSW,-31.48,145.83,Low emissions 2090,2539,2219,4002
+46,Cobar,46 - Cobar,NSW,-31.48,145.83,High emissions 2050,2286,2170,4304
+46,Cobar,46 - Cobar,NSW,-31.48,145.83,High emissions 2090,1411,2053,5296
+47,Bickley,47 - Bickley,WA,-32.01,116.14,Historical 1990-2015,4149,2576,2035
+47,Bickley,47 - Bickley,WA,-32.01,116.14,Low emissions 2050,3472,2842,2446
+47,Bickley,47 - Bickley,WA,-32.01,116.14,Low emissions 2090,3759,2687,2314
+47,Bickley,47 - Bickley,WA,-32.01,116.14,High emissions 2050,3157,3015,2588
+47,Bickley,47 - Bickley,WA,-32.01,116.14,High emissions 2090,2141,3066,3553
+48,Dubbo,48 - Dubbo,NSW,-32.22,148.57,Historical 1990-2015,3768,2350,2642
+48,Dubbo,48 - Dubbo,NSW,-32.22,148.57,Low emissions 2050,3193,2348,3219
+48,Dubbo,48 - Dubbo,NSW,-32.22,148.57,Low emissions 2090,3268,2326,3166
+48,Dubbo,48 - Dubbo,NSW,-32.22,148.57,High emissions 2050,3030,2426,3304
+48,Dubbo,48 - Dubbo,NSW,-32.22,148.57,High emissions 2090,1982,2279,4499
+49,Katanning,49 - Katanning,WA,-33.69,117.61,Historical 1990-2015,4903,2222,1635
+49,Katanning,49 - Katanning,WA,-33.69,117.61,Low emissions 2050,4228,2608,1924
+49,Katanning,49 - Katanning,WA,-33.69,117.61,Low emissions 2090,4611,2346,1803
+49,Katanning,49 - Katanning,WA,-33.69,117.61,High emissions 2050,3819,2837,2104
+49,Katanning,49 - Katanning,WA,-33.69,117.61,High emissions 2090,2811,3313,2636
+50,Oakey,50 - Oakey,QLD,-27.40,151.74,Historical 1990-2015,2970,3033,2757
+50,Oakey,50 - Oakey,QLD,-27.40,151.74,Low emissions 2050,2453,2877,3430
+50,Oakey,50 - Oakey,QLD,-27.40,151.74,Low emissions 2090,2609,2930,3221
+50,Oakey,50 - Oakey,QLD,-27.40,151.74,High emissions 2050,2199,2687,3874
+50,Oakey,50 - Oakey,QLD,-27.40,151.74,High emissions 2090,1349,2247,5164
+51,Forrest,51 - Forrest,WA,-30.84,128.11,Historical 1990-2015,3204,2865,2691
+51,Forrest,51 - Forrest,WA,-30.84,128.11,Low emissions 2050,2691,2949,3120
+51,Forrest,51 - Forrest,WA,-30.84,128.11,Low emissions 2090,2799,2912,3049
+51,Forrest,51 - Forrest,WA,-30.84,128.11,High emissions 2050,2471,2901,3388
+51,Forrest,51 - Forrest,WA,-30.84,128.11,High emissions 2090,1700,2547,4513
+52,Swanbourne,52 - Swanbourne,WA,-31.96,115.76,Historical 1990-2015,2211,4130,2419
+52,Swanbourne,52 - Swanbourne,WA,-31.96,115.76,Low emissions 2050,1724,4039,2997
+52,Swanbourne,52 - Swanbourne,WA,-31.96,115.76,Low emissions 2090,1929,4139,2692
+52,Swanbourne,52 - Swanbourne,WA,-31.96,115.76,High emissions 2050,1441,3863,3456
+52,Swanbourne,52 - Swanbourne,WA,-31.96,115.76,High emissions 2090,914,3029,4817
+53,Ceduna,53 - Ceduna,SA,-32.13,133.70,Historical 1990-2015,3298,3515,1947
+53,Ceduna,53 - Ceduna,SA,-32.13,133.70,Low emissions 2050,2700,3357,2703
+53,Ceduna,53 - Ceduna,SA,-32.13,133.70,Low emissions 2090,2936,3492,2332
+53,Ceduna,53 - Ceduna,SA,-32.13,133.70,High emissions 2050,2539,3287,2934
+53,Ceduna,53 - Ceduna,SA,-32.13,133.70,High emissions 2090,2039,3382,3339
+54,Mandurah,54 - Mandurah,WA,-32.52,115.71,Historical 1990-2015,2192,4180,2388
+54,Mandurah,54 - Mandurah,WA,-32.52,115.71,Low emissions 2050,1779,4048,2933
+54,Mandurah,54 - Mandurah,WA,-32.52,115.71,Low emissions 2090,1995,4143,2622
+54,Mandurah,54 - Mandurah,WA,-32.52,115.71,High emissions 2050,1422,3951,3387
+54,Mandurah,54 - Mandurah,WA,-32.52,115.71,High emissions 2090,870,3104,4786
+55,Esperance,55 - Esperance,WA,-33.83,121.89,Historical 1990-2015,3576,4005,1179
+55,Esperance,55 - Esperance,WA,-33.83,121.89,Low emissions 2050,3002,4195,1563
+55,Esperance,55 - Esperance,WA,-33.83,121.89,Low emissions 2090,3232,4134,1394
+55,Esperance,55 - Esperance,WA,-33.83,121.89,High emissions 2050,2633,4312,1815
+55,Esperance,55 - Esperance,WA,-33.83,121.89,High emissions 2090,1842,4452,2466
+56,Mascot (Sydney AP),56 - Mascot (Sydney AP),NSW,-33.94,151.17,Historical 1990-2015,2189,3996,2575
+56,Mascot (Sydney AP),56 - Mascot (Sydney AP),NSW,-33.94,151.17,Low emissions 2050,1319,3657,3784
+56,Mascot (Sydney AP),56 - Mascot (Sydney AP),NSW,-33.94,151.17,Low emissions 2090,1615,3800,3345
+56,Mascot (Sydney AP),56 - Mascot (Sydney AP),NSW,-33.94,151.17,High emissions 2050,1333,3527,3900
+56,Mascot (Sydney AP),56 - Mascot (Sydney AP),NSW,-33.94,151.17,High emissions 2090,641,2822,5297
+57,Manjimup,57 - Manjimup,WA,-34.25,116.14,Historical 1990-2015,5092,2521,1147
+57,Manjimup,57 - Manjimup,WA,-34.25,116.14,Low emissions 2050,4393,2977,1390
+57,Manjimup,57 - Manjimup,WA,-34.25,116.14,Low emissions 2090,4811,2691,1258
+57,Manjimup,57 - Manjimup,WA,-34.25,116.14,High emissions 2050,4096,3152,1512
+57,Manjimup,57 - Manjimup,WA,-34.25,116.14,High emissions 2090,2913,3600,2247
+58,Albany,58 - Albany,WA,-34.94,117.82,Historical 1990-2015,4501,3553,706
+58,Albany,58 - Albany,WA,-34.94,117.82,Low emissions 2050,3790,3928,1042
+58,Albany,58 - Albany,WA,-34.94,117.82,Low emissions 2090,4192,3692,876
+58,Albany,58 - Albany,WA,-34.94,117.82,High emissions 2050,3587,4082,1091
+58,Albany,58 - Albany,WA,-34.94,117.82,High emissions 2090,2840,4305,1615
+59,Mt Lofty,59 - Mt Lofty,SA,-34.98,138.71,Historical 1990-2015,6644,1307,809
+59,Mt Lofty,59 - Mt Lofty,SA,-34.98,138.71,Low emissions 2050,6349,1449,962
+59,Mt Lofty,59 - Mt Lofty,SA,-34.98,138.71,Low emissions 2090,6395,1337,1028
+59,Mt Lofty,59 - Mt Lofty,SA,-34.98,138.71,High emissions 2050,6234,1383,1143
+59,Mt Lofty,59 - Mt Lofty,SA,-34.98,138.71,High emissions 2090,5134,2054,1572
+60,Tullamarine (Melbourne AP),60 - Tullamarine (Melbourne AP),VIC,-37.67,144.83,Historical 1990-2015,5347,2351,1062
+60,Tullamarine (Melbourne AP),60 - Tullamarine (Melbourne AP),VIC,-37.67,144.83,Low emissions 2050,4786,2672,1302
+60,Tullamarine (Melbourne AP),60 - Tullamarine (Melbourne AP),VIC,-37.67,144.83,Low emissions 2090,4904,2567,1289
+60,Tullamarine (Melbourne AP),60 - Tullamarine (Melbourne AP),VIC,-37.67,144.83,High emissions 2050,4414,2858,1488
+60,Tullamarine (Melbourne AP),60 - Tullamarine (Melbourne AP),VIC,-37.67,144.83,High emissions 2090,2869,3302,2589
+61,Mt Gambier,61 - Mt Gambier,SA,-37.75,140.77,Historical 1990-2015,6058,1964,738
+61,Mt Gambier,61 - Mt Gambier,SA,-37.75,140.77,Low emissions 2050,5423,2441,896
+61,Mt Gambier,61 - Mt Gambier,SA,-37.75,140.77,Low emissions 2090,5798,2142,820
+61,Mt Gambier,61 - Mt Gambier,SA,-37.75,140.77,High emissions 2050,5288,2481,991
+61,Mt Gambier,61 - Mt Gambier,SA,-37.75,140.77,High emissions 2090,3855,3397,1508
+62,Moorabbin,62 - Moorabbin,VIC,-37.98,145.10,Historical 1990-2015,5037,2668,1055
+62,Moorabbin,62 - Moorabbin,VIC,-37.98,145.10,Low emissions 2050,4505,2984,1271
+62,Moorabbin,62 - Moorabbin,VIC,-37.98,145.10,Low emissions 2090,4640,2901,1219
+62,Moorabbin,62 - Moorabbin,VIC,-37.98,145.10,High emissions 2050,4074,3131,1555
+62,Moorabbin,62 - Moorabbin,VIC,-37.98,145.10,High emissions 2090,2475,3410,2875
+63,Warrnambool,63 - Warrnambool,VIC,-38.29,142.45,Historical 1990-2015,6064,2220,476
+63,Warrnambool,63 - Warrnambool,VIC,-38.29,142.45,Low emissions 2050,5573,2566,621
+63,Warrnambool,63 - Warrnambool,VIC,-38.29,142.45,Low emissions 2090,5845,2385,530
+63,Warrnambool,63 - Warrnambool,VIC,-38.29,142.45,High emissions 2050,5427,2677,656
+63,Warrnambool,63 - Warrnambool,VIC,-38.29,142.45,High emissions 2090,3768,3640,1352
+64,Cape Otway,64 - Cape Otway,VIC,-38.86,143.51,Historical 1990-2015,5980,2340,440
+64,Cape Otway,64 - Cape Otway,VIC,-38.86,143.51,Low emissions 2050,5341,2861,558
+64,Cape Otway,64 - Cape Otway,VIC,-38.86,143.51,Low emissions 2090,5669,2576,515
+64,Cape Otway,64 - Cape Otway,VIC,-38.86,143.51,High emissions 2050,5119,3030,611
+64,Cape Otway,64 - Cape Otway,VIC,-38.86,143.51,High emissions 2090,2535,4823,1402
+65,Orange,65 - Orange,NSW,-33.38,149.13,Historical 1990-2015,5793,1970,997
+65,Orange,65 - Orange,NSW,-33.38,149.13,Low emissions 2050,5341,2074,1345
+65,Orange,65 - Orange,NSW,-33.38,149.13,Low emissions 2090,5255,2123,1382
+65,Orange,65 - Orange,NSW,-33.38,149.13,High emissions 2050,5113,2222,1425
+65,Orange,65 - Orange,NSW,-33.38,149.13,High emissions 2090,3684,2533,2543
+66,Ballarat,66 - Ballarat,VIC,-37.51,143.79,Historical 1990-2015,6360,1462,938
+66,Ballarat,66 - Ballarat,VIC,-37.51,143.79,Low emissions 2050,6006,1678,1076
+66,Ballarat,66 - Ballarat,VIC,-37.51,143.79,Low emissions 2090,6112,1602,1046
+66,Ballarat,66 - Ballarat,VIC,-37.51,143.79,High emissions 2050,5734,1801,1225
+66,Ballarat,66 - Ballarat,VIC,-37.51,143.79,High emissions 2090,4262,2543,1955
+67,Low Head,67 - Low Head,TAS,-41.06,146.79,Historical 1990-2015,6029,2498,233
+67,Low Head,67 - Low Head,TAS,-41.06,146.79,Low emissions 2050,5545,2835,380
+67,Low Head,67 - Low Head,TAS,-41.06,146.79,Low emissions 2090,5629,2807,324
+67,Low Head,67 - Low Head,TAS,-41.06,146.79,High emissions 2050,4879,3211,670
+67,Low Head,67 - Low Head,TAS,-41.06,146.79,High emissions 2090,2972,4148,1640
+68,Launceston AP,68 - Launceston AP,TAS,-41.55,147.21,Historical 1990-2015,6472,1842,446
+68,Launceston AP,68 - Launceston AP,TAS,-41.55,147.21,Low emissions 2050,6227,1956,577
+68,Launceston AP,68 - Launceston AP,TAS,-41.55,147.21,Low emissions 2090,6312,1921,527
+68,Launceston AP,68 - Launceston AP,TAS,-41.55,147.21,High emissions 2050,5895,2214,651
+68,Launceston AP,68 - Launceston AP,TAS,-41.55,147.21,High emissions 2090,4132,2955,1673
+69,Thredbo Village,69 - Thredbo Village,NSW,-36.49,148.30,Historical 1990-2015,7274,1265,221
+69,Thredbo Village,69 - Thredbo Village,NSW,-36.49,148.30,Low emissions 2050,6741,1565,454
+69,Thredbo Village,69 - Thredbo Village,NSW,-36.49,148.30,Low emissions 2090,6907,1444,409
+69,Thredbo Village,69 - Thredbo Village,NSW,-36.49,148.30,High emissions 2050,6579,1645,536
+69,Thredbo Village,69 - Thredbo Village,NSW,-36.49,148.30,High emissions 2090,5292,2309,1159
+70,Toowoomba,70 - Toowoomba,QLD,-27.54,151.91,Historical 1990-2015,3203,3595,1962
+70,Toowoomba,70 - Toowoomba,QLD,-27.54,151.91,Low emissions 2050,2561,3588,2611
+70,Toowoomba,70 - Toowoomba,QLD,-27.54,151.91,Low emissions 2090,2725,3623,2412
+70,Toowoomba,70 - Toowoomba,QLD,-27.54,151.91,High emissions 2050,2008,3722,3030
+70,Toowoomba,70 - Toowoomba,QLD,-27.54,151.91,High emissions 2090,999,3174,4587
+71,Atherton,71 - Atherton,QLD,-17.07,145.43,Historical 1990-2015,449,2929,5382
+71,Atherton,71 - Atherton,QLD,-17.07,145.43,Low emissions 2050,350,2489,5921
+71,Atherton,71 - Atherton,QLD,-17.07,145.43,Low emissions 2090,328,2609,5823
+71,Atherton,71 - Atherton,QLD,-17.07,145.43,High emissions 2050,153,1840,6767
+71,Atherton,71 - Atherton,QLD,-17.07,145.43,High emissions 2090,75,1220,7465
+72,Roxby Downs,72 - Roxby Downs,SA,-30.48,136.88,Historical 1990-2015,2649,2322,3789
+72,Roxby Downs,72 - Roxby Downs,SA,-30.48,136.88,Low emissions 2050,2226,2429,4105
+72,Roxby Downs,72 - Roxby Downs,SA,-30.48,136.88,Low emissions 2090,2309,2363,4088
+72,Roxby Downs,72 - Roxby Downs,SA,-30.48,136.88,High emissions 2050,2009,2274,4477
+72,Roxby Downs,72 - Roxby Downs,SA,-30.48,136.88,High emissions 2090,1284,2086,5390
+73,Maleny,73 - Maleny,QLD,-26.75,152.85,Historical 1990-2015,2551,3961,2248
+73,Maleny,73 - Maleny,QLD,-26.75,152.85,Low emissions 2050,1971,3794,2995
+73,Maleny,73 - Maleny,QLD,-26.75,152.85,Low emissions 2090,2232,3848,2680
+73,Maleny,73 - Maleny,QLD,-26.75,152.85,High emissions 2050,1474,3664,3622
+73,Maleny,73 - Maleny,QLD,-26.75,152.85,High emissions 2090,605,2824,5331
+74,Katherine,74 - Katherine,NT,-14.52,132.38,Historical 1990-2015,358,1022,7380
+74,Katherine,74 - Katherine,NT,-14.52,132.38,Low emissions 2050,233,942,7585
+74,Katherine,74 - Katherine,NT,-14.52,132.38,Low emissions 2090,222,896,7642
+74,Katherine,74 - Katherine,NT,-14.52,132.38,High emissions 2050,116,769,7875
+74,Katherine,74 - Katherine,NT,-14.52,132.38,High emissions 2090,7,528,8225
+75,Adelaide Coastal (AMO),75 - Adelaide Coastal (AMO),SA,-34.95,138.52,Historical 1990-2015,3847,3276,1637
+75,Adelaide Coastal (AMO),75 - Adelaide Coastal (AMO),SA,-34.95,138.52,Low emissions 2050,3287,3375,2098
+75,Adelaide Coastal (AMO),75 - Adelaide Coastal (AMO),SA,-34.95,138.52,Low emissions 2090,3549,3232,1979
+75,Adelaide Coastal (AMO),75 - Adelaide Coastal (AMO),SA,-34.95,138.52,High emissions 2050,3020,3463,2277
+75,Adelaide Coastal (AMO),75 - Adelaide Coastal (AMO),SA,-34.95,138.52,High emissions 2090,2288,3829,2643
+76,Tamworth,76 - Tamworth,NSW,-31.07,150.84,Historical 1990-2015,3491,2582,2687
+76,Tamworth,76 - Tamworth,NSW,-31.07,150.84,Low emissions 2050,2996,2497,3267
+76,Tamworth,76 - Tamworth,NSW,-31.07,150.84,Low emissions 2090,3083,2477,3200
+76,Tamworth,76 - Tamworth,NSW,-31.07,150.84,High emissions 2050,2795,2495,3470
+76,Tamworth,76 - Tamworth,NSW,-31.07,150.84,High emissions 2090,1842,2239,4679
+77,Parramatta,77 - Parramatta,NSW,-33.92,150.99,Historical 1990-2015,3107,3301,2352
+77,Parramatta,77 - Parramatta,NSW,-33.92,150.99,Low emissions 2050,2550,3173,3037
+77,Parramatta,77 - Parramatta,NSW,-33.92,150.99,Low emissions 2090,2626,3098,3036
+77,Parramatta,77 - Parramatta,NSW,-33.92,150.99,High emissions 2050,2278,3213,3269
+77,Parramatta,77 - Parramatta,NSW,-33.92,150.99,High emissions 2090,1359,2767,4634
+78,Sub-Alpine (Cooma AP),78 - Sub-Alpine (Cooma AP),NSW,-36.29,148.97,Historical 1990-2015,6491,1523,746
+78,Sub-Alpine (Cooma AP),78 - Sub-Alpine (Cooma AP),NSW,-36.29,148.97,Low emissions 2050,5866,1834,1060
+78,Sub-Alpine (Cooma AP),78 - Sub-Alpine (Cooma AP),NSW,-36.29,148.97,Low emissions 2090,6033,1750,977
+78,Sub-Alpine (Cooma AP),78 - Sub-Alpine (Cooma AP),NSW,-36.29,148.97,High emissions 2050,5684,1942,1134
+78,Sub-Alpine (Cooma AP),78 - Sub-Alpine (Cooma AP),NSW,-36.29,148.97,High emissions 2090,4418,2484,1858
+79,Blue Mountains,79 - Blue Mountains,NSW,-33.62,150.27,Historical 1990-2015,6248,1839,673
+79,Blue Mountains,79 - Blue Mountains,NSW,-33.62,150.27,Low emissions 2050,5972,2016,772
+79,Blue Mountains,79 - Blue Mountains,NSW,-33.62,150.27,Low emissions 2090,6030,1968,762
+79,Blue Mountains,79 - Blue Mountains,NSW,-33.62,150.27,High emissions 2050,5522,2203,1035
+79,Blue Mountains,79 - Blue Mountains,NSW,-33.62,150.27,High emissions 2090,4400,2783,1577
+80,Coldstream,80 - Coldstream,VIC,-37.72,145.41,Historical 1990-2015,5585,1995,1180
+80,Coldstream,80 - Coldstream,VIC,-37.72,145.41,Low emissions 2050,5050,2298,1412
+80,Coldstream,80 - Coldstream,VIC,-37.72,145.41,Low emissions 2090,5127,2218,1415
+80,Coldstream,80 - Coldstream,VIC,-37.72,145.41,High emissions 2050,4625,2435,1700
+80,Coldstream,80 - Coldstream,VIC,-37.72,145.41,High emissions 2090,3123,2982,2655
+81,Busselton,81 - Busselton,WA,-33.69,115.40,Historical 1990-2015,3821,3230,1709
+81,Busselton,81 - Busselton,WA,-33.69,115.40,Low emissions 2050,3339,3423,1998
+81,Busselton,81 - Busselton,WA,-33.69,115.40,Low emissions 2090,3637,3305,1818
+81,Busselton,81 - Busselton,WA,-33.69,115.40,High emissions 2050,3069,3495,2196
+81,Busselton,81 - Busselton,WA,-33.69,115.40,High emissions 2090,2154,3450,3156
+82,Glasshouse Mts,82 - Glasshouse Mts,QLD,-26.96,152.96,Historical 1990-2015,1689,3242,3829
+82,Glasshouse Mts,82 - Glasshouse Mts,QLD,-26.96,152.96,Low emissions 2050,1370,2866,4524
+82,Glasshouse Mts,82 - Glasshouse Mts,QLD,-26.96,152.96,Low emissions 2090,1455,3011,4294
+82,Glasshouse Mts,82 - Glasshouse Mts,QLD,-26.96,152.96,High emissions 2050,964,2556,5240
+82,Glasshouse Mts,82 - Glasshouse Mts,QLD,-26.96,152.96,High emissions 2090,443,1814,6503
+83,Christmas Island,83 - Christmas Island,WA,-12.19,96.83,Historical 1990-2015,0,0,8760
+83,Christmas Island,83 - Christmas Island,WA,-12.19,96.83,Low emissions 2050,0,0,8760
+83,Christmas Island,83 - Christmas Island,WA,-12.19,96.83,Low emissions 2090,0,0,8760
+83,Christmas Island,83 - Christmas Island,WA,-12.19,96.83,High emissions 2050,0,0,8760
+83,Christmas Island,83 - Christmas Island,WA,-12.19,96.83,High emissions 2090,0,0,8760

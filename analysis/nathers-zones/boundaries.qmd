@@ -28,6 +28,10 @@ postcode_url <- paste0(
   "/sites/default/files/2019-12/",
   "NatHERSclimatezonesNov2019_0.csv")
 
+here("data", "nathers-zone-names.csv") %>%
+  read_csv(col_types = "ic") ->
+town_list
+
 postcode_url %>%
   read_csv(skip = 1, col_select = 1:4, col_types = "ciii") %>%
   mutate(
@@ -35,6 +39,9 @@ postcode_url %>%
     zone = coalesce(Primary, Secondary, Tertiary)) %>%
   filter(!is.na(postcode), nchar(postcode) == 4) %>%
   select(postcode, zone) %>%
+  left_join(town_list, by = "zone", multiple = "all") %>%
+  mutate(town = paste0(zone, " - ", town)) %>%
+  arrange(zone) %>%
   write_csv(here("data", "nathers-zones.csv")) %>%
   print() ->
 postcode_map
@@ -66,12 +73,20 @@ here("data", "POA_2016_AUST.shp") %>%
   right_join(postcode_map, by = c("POA_CODE16" = "postcode")) %>%
   group_by(zone) %>%
   summarise() %>%
-  st_simplify(dTolerance = 0.05) %>%
+  st_simplify(dTolerance = 100) %>%
   filter(!st_is_empty(.)) ->
 boundaries
 
+# merge the town names back in
+
+
+boundaries %>%
+  left_join(town_list, by = "zone") %>%
+  mutate(town = paste0(zone, " - ", town)) ->
+boundaries_towns
+
 st_write(
-  boundaries,
+  boundaries_towns,
   here("data", "nathers-boundaries.geojson"),
   delete_dsn = TRUE)
 ```
@@ -79,10 +94,10 @@ st_write(
 Let's see a quick map with the regions labelled:
 
 ```{r}
-boundaries <-
+boundaries_towns <-
   read_sf(here("data", "nathers-boundaries.geojson"))
 
-ggplot(boundaries) +
+ggplot(boundaries_towns) +
   geom_sf(fill = "#cccccc") +
   geom_sf_label(aes(label = zone)) +
   theme_minimal()

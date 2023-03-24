@@ -13,6 +13,7 @@ library(tidyverse)
 library(haven)
 library(glue)
 library(here)
+library(sf)
 
 # load the survey data. exclude people without a postcode
 survey <-
@@ -30,6 +31,17 @@ here("data", "nathers-zones.csv") %>%
   read_csv() %>%
   right_join(survey, by = c("postcode" = "Q43"), multiple = "all") ->
 survey_merged
+```
+
+We'll also need the town names for each zone so that people can find the zones without a map:
+
+```{r}
+#| label: town-names
+
+here("data", "nathers-zone-names.csv") %>%
+  read_csv(col_types = "ic") %>%
+  mutate(town = paste0(zone, " - ", town)) ->
+town_list
 ```
 
 Now, how many people are in each zone?
@@ -150,7 +162,7 @@ prop_Q12
 
 prop_Q12 %>%
   errorbar_barchart("Q12",
-    "Can you keep comfortably warm in hyour house during winter?")
+    "Can you keep comfortably warm in your house during winter?")
 ```
 
 #### Q13: Can you keep comfortably cool in your house during summer?
@@ -176,7 +188,7 @@ prop_Q13
 
 prop_Q13 %>%
   errorbar_barchart("Q13",
-    "Can you keep comfortably cool in hyour house during summer?")
+    "Can you keep comfortably cool in your house during summer?")
 ```
 
 #### Q18: How would you rate the overall condition of your current home, such as the walls, roof, doors and windows for example.
@@ -445,6 +457,7 @@ Q12/Q13, Q25-Q28: are folks within a climate zone more/less likely to report bei
 ### Warm vs. cool: which do people struggle with more?
 
 ```{r}
+#| label: summer-winter
 list(winterwarm = prop_Q12, summercool = prop_Q13) %>%
   # combine and pivot
   bind_rows(.id = "df") %>%
@@ -465,7 +478,7 @@ list(winterwarm = prop_Q12, summercool = prop_Q13) %>%
   group_by(zone) %>%
   mutate(
     ntotal = min(ntotal),
-    signif = if_else(plow[1] <= phigh[2] & plow[2] <= phigh[1], "❌", "✅")) %>%
+    signif = if_else(plow[1] <= phigh[2] & plow[2] <= phigh[1], NA_character_, "✅")) %>%
   ungroup() %>%
   # make zone labels, turn %s back into counts, reformat seasons
   mutate(
@@ -474,8 +487,17 @@ list(winterwarm = prop_Q12, summercool = prop_Q13) %>%
     season = case_match(question,
       "winterwarm" ~ "Winter",
       "summercool" ~ "Summer")) %>%
-  select(zone, season, signif, ntotal, n, p, moe, nlow, plow, nhigh, phigh) %>%
-  write_csv(here("data", "survey-discomfort-summerwinter.csv")) %>%
+  # finally, merge in town names and select
+  left_join(town_list, by = "zone", multiple = "all") %>%
+  select(zone, town, season, signif, ntotal, n, p, moe, nlow, plow, nhigh, phigh) %>%
+  write_csv(here("data", "survey-discomfort-summerwinter.csv")) ->
+summer_winter
+
+# merge in town names
+  
+# visualise
+summer_winter
+  %>%
   mutate(
     zone_label = glue("{signif} Zone {zone} (n = {ntotal})"),
     zone_label = fct_reorder(zone_label, ntotal, .desc = TRUE)) %>%
@@ -497,5 +519,22 @@ list(winterwarm = prop_Q12, summercool = prop_Q13) %>%
         subtitle = "✅ Statistically significant"
       )
   }
-
 ```
+
+Let's widen these results so that we can compare summer and winter on a Flourish map.
+
+```{r}
+summer_winter %>%
+  filter(!is.na(zone)) %>%
+  pivot_wider(names_from = season, values_from = ntotal:phigh) %>%
+  mutate(balance = case_when(
+    signif == "✅" & p_Summer > p_Winter ~ "More suffering in summer",
+    signif == "✅" & p_Summer <= p_Winter ~ "More suffering in winter",
+    p_Summer > p_Winter ~ "No significant difference (summer slightly higher)",
+    p_Summer <= p_Winter ~ "No significant difference (winter slightly higher)"
+  )) %>%
+  filter(!is.na(balance)) %>%
+  write_csv(here("data", "survey-discomfort-summerwinter-wide.csv")) ->
+summer_winter_wide
+```
+
