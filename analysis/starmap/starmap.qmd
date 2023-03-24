@@ -1,0 +1,37 @@
+---
+title: Energy star ratings
+format:
+  360-analysis-html: default
+author: James Goldie
+date: last-modified
+code-fold: true
+---
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(readxl)
+library(janitor)
+library(here)
+
+here("data", "star-ratings.xlsx") %>%
+  read_excel("Average Star Rating") %>%
+  # clean up column names
+  clean_names() %>%
+  set_names(str_replace, "class_[0-9]_", "") %>%
+  # separate climate zone and number
+  separate(climate_zone_name_and_number, into = c("zone_number", "zone_name"), sep = " - ") %>%
+  # lengthen house type/build type
+  mutate(
+    zone_number = as.numeric(zone_number),
+    town = paste0(zone_number, " - ", zone_name)) %>%
+  select(zone = zone_number, town,
+    new_houses = house_new_dwelling,
+    existing_houses = house_existing_dwelling,
+    renovated_houses = house_renovation,
+    new_apartments = apartment_new_dwelling,
+    existing_apartments = apartment_existing_dwelling,
+    renovated_apartments = apartment_renovation) %>%
+  write_csv(here("data", "star-ratings-average.csv"), na = "") ->
+avg_stars
+```

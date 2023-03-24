@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: out
+  render:
+    - analysis/heating-cooling/heatingcooling.qmd
+    - analysis/nathers-zones/boundaries.qmd
+    - analysis/renter-survey/survey.qmd
+    - analysis/starmap/starmap.qmd
   
 # only re-render if the source changes or if we specifically render that file
 execute:

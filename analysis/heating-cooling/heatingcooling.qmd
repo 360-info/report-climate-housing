@@ -1,0 +1,98 @@
+---
+title: Changing heating and cooling
+format:
+  360-analysis-html: default
+author: James Goldie
+date: last-modified
+code-fold: true
+---
+
+Australia's heating and cooling needs are changing with the climate.
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+# library(arrow)
+library(sf)
+# library(ggforce)
+# library(themes360info)
+library(here)
+```
+
+<!-- start by importing the csiro data -->
+{{< include _import.qmd >}}
+
+# Heating and cooling hours
+
+Now that we have the data loaded, let's unpack it all and work out the heating/cooling hours.
+
+These are in fact heating/cooling _degree_-hours: not just the number of hours above or below a heating/cooling threshold, but mutliplied but how far the temperature is above or below the threshold.
+
+For example, if the heating threshold is 15°C, 2 hours at 14°C counts as 2 heating hours, but 2 hours at 10°C counts as 10 heating hours.
+
+```{r}
+heating_threshold <- 15
+cooling_threshold <- 21
+```
+
+For this analysis we'll use the Energy Rating's thresholds of 15°C for heating and 21°C for cooling, which [Peterson (2014)](https://www.energyrating.gov.au/sites/default/files/documents/Climate_zone_mapping_-_air_con_FINAL_title_updated_0.pdf) chooses based on residential building requirements (for commercial buildings, for example, or multi-story buildings). [If you'd like to repeat this analysis with different thresholds, you can re-render the document, changing the thresholds in `params` at the top of the file.]{.aside}
+
+[Heating/cooling degree-_days_ are used by many organisations too. You can convert degree-hours to degree days by dividing by 24.]{.aside}
+
+Before we work out the total annual heating/cooling hours, let's just work out the heating/cooling degrees of each hour.
+
+```{r}
+#| label: calc-hc-degrees
+all_data %>%
+  unnest(timeseries) %>%
+  mutate(
+    heating_deg = pmax(heating_threshold - temperature, 0),
+    cooling_deg = pmax(temperature - cooling_threshold, 0)) ->
+hc_degrees
+
+hc_degrees %>%
+  select(-path, -folder) %>%
+  write_parquet(here("data", "csiro", "heating-cooling-temps.parquet"))
+```
+
+Now that we have all the temperatures, we need to calculate the annual heating/cooling hours.
+
+```{r}
+#| label: sum-hc-hours
+
+hc_degrees %>%
+  # first, we need to annualise the historical figures (they include a block of
+  # years' data, whereas the projections include just one average year)
+  # now we can calculate the total hours
+  group_by(zone_nathers, zone_acdb, location_code, town, state, country, wmo_number, lat, lon, utc_offset, elevation, scenario, scenario_year) %>%
+  summarise(
+    heating_deg_hrs = sum(heating_deg, na.rm = TRUE),
+    cooling_deg_hrs = sum(cooling_deg, na.rm = TRUE),
+    safe_deg_hrs = length(which(heating_deg == 0 & cooling_deg == 0)),
+    heating_hrs = length(which(heating_deg > 0)),
+    cooling_hrs = length(which(cooling_deg > 0)),
+    safe_hrs = length(which(heating_deg == 0 & cooling_deg == 0)),
+    ) %>%
+  ungroup() %>%
+  # write_csv(here("heatingcooling", "heating-cooling-deghours.csv")) %>%
+  mutate(
+    scenario = case_match(scenario,
+      "RCP26" ~ "Low emissions",
+      "RCP45" ~ "Medium emissions",
+      "RCP85"  ~ "High emissions",
+      .default = "Historical"),
+    scenario = paste(scenario, scenario_year),
+    zone = as.numeric(zone_nathers),
+    zone_label = paste0(zone, " - ", town),) %>%
+  filter(scenario %in% c(
+    "Historical 1990-2015",
+    "Low emissions 2050",
+    "High emissions 2050",
+    "Low emissions 2090",
+    "High emissions 2090")) %>%
+  select(zone, town, zone_label, state, lat, lon, scenario, heating_hrs, safe_hrs, cooling_hrs) %>%
+  write_csv(here("data", "csiro-heating-cooling-deghours.csv")) ->
+  # write_parquet(here("data", "csiro", "csiro-heating-cooling-deghours.parquet")) ->
+degree_hrs
+```
