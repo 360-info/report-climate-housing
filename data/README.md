@@ -1,8 +1,8 @@
 # `/data`
 
-# NatHERS boundaries
+## NatHERS boundaries
 
-The [analysis script]() downloads a map of postcodes to [NatHERS Climate Zones](https://www.nathers.gov.au/nathers-accredited-software/nathers-climate-zones-and-weather-files). It then produces:
+The analysis script downloads a map of postcodes to [NatHERS Climate Zones](https://www.nathers.gov.au/nathers-accredited-software/nathers-climate-zones-and-weather-files). It then produces:
 
 - `nathers-zone-names.csv`: a map of zone numbers to names
 - `naters-zones.csv`: a map of postcodes to zone names and numbers
@@ -19,10 +19,6 @@ There are two sheets in the workbook: one on the average energy star rating, ano
 Figures are also provided separately for new builds, renovations and existing dwellings.
 
 New build and renovation data is based on actual certificates issues between 2016 and 2021. Existing dwelling data is simulated by removing energy saving features from the new build and renovation certificate data. Existing dwelling simulations are only available in some areas.
-
-## Not included with repository
-
-`02_AHCD_Sensitive_Data_File_001469.dta` contains the record-level survey results from the [Australian Housing Condition Data Infrastructure](https://doi.org/10.26193/IBL7PZ). This data cannot be shared without permission. You can apply for permission to download the data, as well as the data dictionary, from the [ADA Dataverse page](https://doi.org/10.26193/IBL7PZ).
 
 ## Survey results
 
@@ -43,6 +39,8 @@ These are aggregated results from the [Australian Housing Condition Data Infrast
   * `phigh_Winter`, `phigh_Summer`: the higher bound on the estimated proportion of people who answered `No`
   * `balance`: the significance of the difference between summer and winter.
 
+# Not included with the repository
+
 ### Typical and projected climate
 
 `/data/csiro-climate/projections` and `/data/csiro-climate/typical` should contain the unzipped contents of:
@@ -51,3 +49,7 @@ These are aggregated results from the [Australian Housing Condition Data Infrast
 - `projections`: [Projected weather files for building energy modelling](https://agdatashop.csiro.au/future-climate-predictive-weather)
 
 These files are not included in the repository due to their size, but they are freely available from the above links at the CSIRO AgData Shop.
+
+## Survey results
+
+`02_AHCD_Sensitive_Data_File_001469.dta` contains the record-level survey results from the [Australian Housing Condition Data Infrastructure](https://doi.org/10.26193/IBL7PZ). This data cannot be shared without permission. You can apply for permission to download the data, as well as the data dictionary, from the [ADA Dataverse page](https://doi.org/10.26193/IBL7PZ).
